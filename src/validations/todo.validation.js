@@ -1,13 +1,11 @@
 import ResponseService from '../services/response.service';
+import code from '../helpers/status-code.helper';
 
 export const validateCreateTodo = (req, res, next) => {
 	const schema = Joi.object({
-		title: Joi.string().min(3).max(30).required()
+		title: Joi.string().required()
 			.messages({
-				'string.empty': 'fullname is not allowed to be empty',
-				'string.min': 'fullname length must be at least 3 characters long',
-				'string.max':
-        ' title length must be less than or equal to 30 characters long',
+				'string.empty': 'title is not allowed to be empty',
 				'any.required': 'title is required',
 			}),
 		description: Joi.string().required().messages({
@@ -24,7 +22,7 @@ export const validateCreateTodo = (req, res, next) => {
 	const { error } = schema.validate(req.body);
 	if (error) {
 		const errors = error.details.map((e) => e.message);
-		ResponseService.setError(ResponseService.statusCode.badEntity, errors);
+		ResponseService.setError(code.badEntity, errors);
 		return ResponseService.send(res);
 	}
 
@@ -34,14 +32,9 @@ export const validateCreateTodo = (req, res, next) => {
 export const validateUpdateTodo = (req, res, next) => {
 	const schema = Joi.object({
 		title: Joi.string()
-			.min(3)
-			.max(30)
 			.optional()
 			.messages({
-				'string.empty': 'fullname is not allowed to be empty',
-				'string.min': 'fullname length must be at least 3 characters long',
-				'string.max':
-            ' title length must be less than or equal to 30 characters long'
+				'string.empty': 'title is not allowed to be empty',
 			}),
 		description: Joi.string().optional().messages({
 			'string.empty': 'description is not allowed to be empty',
@@ -56,7 +49,7 @@ export const validateUpdateTodo = (req, res, next) => {
 	const { error } = schema.validate(req.body);
 	if (error) {
 		const errors = error.details.map((e) => e.message);
-		ResponseService.setError(ResponseService.statusCode.badEntity, errors);
+		ResponseService.setError(code.badEntity, errors);
 		return ResponseService.send(res);
 	}
 	next();
@@ -75,7 +68,7 @@ export const validateParam = (req, res, next) => {
 	const { error } = schema.validate(req.body);
 	if (error) {
 		const errors = error.details.map((e) => e.message);
-		ResponseService.setError(ResponseService.statusCode.badEntity, errors);
+		ResponseService.setError(code.badEntity, errors);
 		return ResponseService.send(res);
 	}
 	next();

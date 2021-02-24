@@ -20,7 +20,7 @@ class TodoController {
   		priority: req.body.priority,
   	});
   	ResponseService.setSuccess(
-  		ResponseService.statusCode.created,
+  		code.created,
   		'Todo task successfully created',
   		createdTodo
   	);
@@ -36,7 +36,7 @@ class TodoController {
   static getSingleTodo = async (req, res) => {
   	const toDo = await TodoService.findTodoByAttribute({ id: req.params.id });
   	ResponseService.setSuccess(
-  		ResponseService.statusCode.ok,
+  		code.ok,
   		'Todo task successfully retrieved',
   		toDo
   	);
@@ -52,7 +52,7 @@ class TodoController {
   static getAllTodos = async (req, res) => {
   	const allTodos = await TodoService.findAllTodos();
   	ResponseService.setSuccess(
-  		ResponseService.statusCode.ok,
+  		code.ok,
   		'All Todos successfully retrieved',
   		allTodos
   	);
@@ -69,13 +69,13 @@ class TodoController {
   	if (req.body !== null) {
   		await TodoService.updateTodoByAttribute({ id: req.params.id }, req.body);
   		ResponseService.setSuccess(
-  			ResponseService.statusCode.ok,
+  			code.ok,
   			`Todo with id ${req.params.id} successfully edited`
   		);
   		return ResponseService.send(res);
   	}
   	ResponseService.setError(
-  		ResponseService.statusCode.notFound,
+  		code.notFound,
   		`Todo with id ${req.params.id} can not be found`
   	);
   	return ResponseService.send(res);
@@ -90,7 +90,7 @@ class TodoController {
   static deleteSingleTodo = async (req, res) => {
   	await TodoService.deleteTodoByAttribute({ id: req.params.id });
   	ResponseService.setSuccess(
-  		ResponseService.statusCode.deleted,
+  		code.deleted,
   		`Todo with id ${req.params.id} successfully deleted`
   	);
 
@@ -106,7 +106,7 @@ class TodoController {
   static deleteAllTodos = async (req, res) => {
   	await TodoService.deleteAllTodos();
   	ResponseService.setSuccess(
-  		ResponseService.statusCode.deleted,
+  		code.deleted,
   		'All Todos successfully deleted'
   	);
   	return ResponseService.send(res);
@@ -135,7 +135,7 @@ class TodoController {
   		{ offset, limit }
   	);
 	  ResponseService.setSuccess(
-  		ResponseService.statusCode.ok,
+  		code.ok,
   		`Search results of ${req.query.q}`,
   		searchResults
   	);
