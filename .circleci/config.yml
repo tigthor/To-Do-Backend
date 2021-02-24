@@ -1,0 +1,34 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/visitAfrica-backend
+    docker:
+    - image: circleci/node:12.16.1
+    - image: circleci/python:3.6.2-stretch-browsers
+      environment:
+          TEST_DATABASE_URL: postgresql://postgres:postgres@localhost:5432/circle_test
+    - image: circleci/postgres:9.6.5-alpine-ram
+    steps:
+    - checkout
+    - run: sudo apt-get update
+    - run: sudo apt-get install postgresql-client-9.6
+    - run: whoami
+    - run:
+        name: update-npm
+        command: sudo npm install -g npm@latest
+    - restore_cache:
+        key: dependency-cache-{{ checksum "package.json" }}
+    - run:
+        name: install-npm-dependencies
+        command: npm install
+    - save_cache:
+        key: dependency-cache-{{ checksum "package.json" }}
+        paths:
+        - ./node_modules
+    - run:
+        name: test
+        command: npm test
+
+    - run:
+        name: coveralls
+        command: npm run coverage

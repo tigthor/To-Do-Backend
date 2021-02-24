@@ -1,11 +1,7 @@
 
 
-
-<a href="h" target="blank"><img align="center" src="https://raw.githubusercontent.com/tigthor/to-do-app/main/ezgif.com-gif-maker%20(2).gif" alt="tigthor" height="300" width="1200" /></a>
-
-
-# Visit Africa  :airplane: :earth_africa:
-Visit Africa Application is the application that will help users to visit Afirca by booking tickets to differents cities getting and paying for accomodations,rating their visits,chatting between users and work with their history of visits and Most importantly Visit Africa applicaion will promote african tourism.
+# Awesomity Backend Challenge  :airplane:
+Awesomity Backend Challenge is a challenge to create a todo BAckend api where the user can Create, Read, Update and Delete.
 
 ### Badges
 
@@ -20,11 +16,7 @@ Visit Africa Application is the application that will help users to visit Afirca
 * [Pivotal Tracker](https://www.pivotaltracker.com) A project management tool used to manage the app.
 * [Npm](https://www.npmjs.com/) Used as the package manager for the app. A fast, reliable, and secure dependency management system.
 * [Sequelize ORM](https://sequelize.org/v3/) A powerful library in Javascript that makes it easy to manage a SQL database
-
-
-### UI Design :rocket: :rocket:
-The mockups for the app design can be viewed [here](https://www.pivotaltracker.com/n/projects/2474529)
-
+* [Swagger-UI](https://swagger.io) For documenting the APis
 
 ### REST API Docs 	:clap: 	:clap:
 The Api documentation is done using postman. View [VISIT AFRICA Documentation](https://www.getpostman.com/collections/441a0bf9e581e7f8b87e)
@@ -32,42 +24,65 @@ The Api documentation is done using postman. View [VISIT AFRICA Documentation](h
 ### JWT Authentication :raised_hands: :raised_hands:
 The API endpoints are being authenticated using [JWT(Json Web Token)](https://jwt.io/).
 
-### Required Features
+### Api Features
 
 ```
-
+_____________________________________________________________
+METHOD| PATH                     | DESCRIPTIONS              | 
+______|__________________________|___________________________|
+POST  | /api/auth/signup         | Create a new Auth account |
+______|__________________________|___________________________|
+POST  | /api/auth/login          | login with email& password|
+______|__________________________|___________________________|
+PATCH | /api/auth/activate?token | Activate created User     |
+______|__________________________|___________________________|
+GET   | /api/todo/:id            | get todo by paramId       |
+______|__________________________|___________________________|
+POST  | /api/todo                |  create a new todo        |
+______|__________________________|___________________________|
+GET   | /api/todos               | get all todos             |
+______|__________________________|___________________________|
+GET   | /api/search?q={keyword}  | Search todos              |
+______|__________________________|___________________________|
+PATCH | /api/todo/:id            | Edit todo item by id      |
+______|__________________________|___________________________|
+DELETE| /api/todo/:id            | Delete todo item by id    |
+______|__________________________|___________________________|
+DELETE| /api/todos               | Delete all todos          |
+______|__________________________|___________________________|
 ```
 
 ### Installation and Running the Application :collision: :collision:
 
-* Clone the repository using: `git clone https://github.com/Soma-Technologies-Inc/visitAfrica-backend.git`
+* Before cloning the application you need to have these requirements below
+  ##### Prerequisities
+* Node.js installed in your machine it can be downloaded here [Install Node](nodejs.org)
+* Postman installed in your machine it can be downloaded here [Install Postman](https://www.postman.com/)
+* Postgresql installed in your machine it can be downloaded here [Install Postgresql](https://www.postgresql.org/)
+* Sendgrid Api and it can be got here [Sendgrid APi](http://sendgrid.com/)
+* And of course a cup of tea or coffee I prefer coffee
+
+   ##### How to run the project
+* Clone the repository using: `git clone https://github.com/tigthor/To-Do-Backend.git`
 * Run `npm install` To install the project dependencies
+* Use `.env.examples` to set your keys specifically
 * Run `npm run statDev` To start the application
+* Then access the server on `localhost:3000`
+* Then Use swagger docs for testing the application
 * Run `npm test` to run test
 
 ## Hosted Application can be accessed here 	:fire: :fire: 
 [Hosted on heroku](https://visitafrica-backend.herokuapp.com)
 
-## Contributors :star_struck: :star_struck: :heavy_heart_exclamation:
+## Contributor :star_struck: :star_struck: :heavy_heart_exclamation:
 
 <table style="width:100%">
   <tr>
     <th><a href="https://github.com/tigthor">Byiringiro T.</a></th>
-    <th><a href="https://github.com/LouangeMu">Louange M.</a></th>
-    <th><a href="https://github.com/engmutabazi100">Elysee M.</a></th>
-    <th><a href="https://github.com/Hyacinthe396">Hyacinthe M.</a></th> 
-    <th><a href="https://github.com/BenieSereine">Benie S. M.</a></th> 
-    <th><a href="https://github.com/Liliane003">Nishimwe L.</a></th> 
-    <th><a href="https://github.com/eustacheAki">Eustache A.</a></th> 
   </tr>
   <tr>
     <td><img align="center" src="https://i.ibb.co/z2S5bkh/43029221-2108225642763593-8148098077761208320-n-removebg.jpg" alt="tigthor" height="145" width="145">       </td>
-    <td><img align="center" src="https://ca.slack-edge.com/T01247ZBS3H-U01DGM3JZ7W-c72f14089b28-512" alt="tigthor" height="130" width="130"></td>
-    <td><img align="center" src="https://ca.slack-edge.com/T01247ZBS3H-U019S7P39U3-3e359057774d-512" alt="tigthor" height="130" width="130"></td>
-    <td><img align="center" src="https://ca.slack-edge.com/T01247ZBS3H-U01DGM3GDE0-6a15250cdf81-512" alt="tigthor" height="130" width="130"></td>
-    <td><img align="center" src="https://ca.slack-edge.com/T01247ZBS3H-U01DGM3J0LU-ddbc81fb69aa-512" alt="tigthor" height="130" width="130"></td>
-    <td><img align="center" src="https://ca.slack-edge.com/T01247ZBS3H-U01D7DR543X-dbbccf607829-512" alt="tigthor" height="130" width="130"></td>
-    <td><img align="center" src="https://ca.slack-edge.com/T01247ZBS3H-U01BUNW1B2R-d2b0784c5e64-512" alt="tigthor" height="130" width="130"></td>
+  
   </tr>
 </table>
 
@@ -77,4 +92,4 @@ The API endpoints are being authenticated using [JWT(Json Web Token)](https://jw
 
 
 
-<footer>&copy; Copyright 2020 Soma Technologies Inc</footer>
+<footer>&copy; Copyright 2021 Thierry BYIRINGIRO</footer>

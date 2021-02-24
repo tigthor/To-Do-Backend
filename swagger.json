@@ -1,0 +1,406 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "Awesomity Backend Challenge Todo APi",
+      "version": "1.0.0",
+      "title": "To Do Backend",
+      "contact": {
+        "email": "tigthor1337@gmail.com"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/api",
+    "tags": [
+      {
+        "name": "API Endpoints",
+        "description": "",
+        "externalDocs": {
+          "description": "",
+          "url": "http://swagger.io"
+        }
+      }
+    ],
+    "schemes": [
+      "http",
+      "https"
+    ],
+    "paths": {
+      "/auth/signup": {
+        "post": {
+          "tags": [
+            "User"
+          ],
+          "summary": "Create a user",
+          "description": "Endpoint to create a user",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "Body",
+              "description": "Required fields to create a user",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Signup"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Created"
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "409": {
+              "description": "Conflict"
+            }
+          }
+        }
+      },
+      "/auth/login" : {
+        "post": {
+          "tags": [
+            "User"
+          ],
+          "summary": "Login a user",
+          "description": "Endpoint to login a user",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "Body",
+              "description": "Required fields to create a user",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Login"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Ok"
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          }
+        }
+      },
+      "/todo" : {
+        "post": {
+          "tags": [
+            "Todo"
+          ],
+          "summary": "Create a Todo item",
+          "description": "Endpoint to create todo item with title, description and priority",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "header",
+              "name": "Authorization",
+              "required": true,
+              "description": "Bearer {token}",
+              "type": "string"
+            },
+            {
+              "in": "body",
+              "name": "Body",
+              "description": "Required fields to create a todo item",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Todo"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Created"
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "401": {
+              "description":"Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        }
+      },
+      "/todo/{todoId}" : {
+        "get": {
+          "tags": [
+            "Todo"
+          ],
+          "summary": "View a Single Todo item",
+          "description": "Endpoint to View todo item",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "header",
+              "name": "Authorization",
+              "required": true,
+              "description": "Bearer {token}",
+              "type": "string"
+            },
+            {
+              "in": "path",
+              "name": "todoId",
+              "description": "Parameter is required",
+              "required": true,
+              "type": "number"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Ok"
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "401": {
+              "description":"Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not found"
+            }
+          }
+        }
+      },
+      "/todos" : {
+        "get": {
+          "tags": [
+            "Todo"
+          ],
+          "summary": "View all todos",
+          "description": "Endpoint to View all todo items",
+         
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+          ],
+          "responses": {
+            "200": {
+              "description": "Ok"
+            },
+            "401": {
+              "description":"Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not found"
+            }
+          }
+        }
+      },
+      "/todo/{id}/" : {
+        "patch": {
+          "tags": [
+            "Todo"
+          ],
+          "summary": "Update a Todo item",
+          "description": "Endpoint to update todo item which include title, description, priority, createdAt, and updatedAt",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "header",
+              "name": "Authorization",
+              "required": true,
+              "description": "Bearer {token}",
+              "type": "string"
+            },
+            {
+              "in": "path",
+              "name": "todoId",
+              "description": "Parameter is required",
+              "required": true,
+              "type": "number"
+            },
+            {
+              "in": "body",
+              "name": "Body",
+              "description": "Update title, description or priority",
+              "type": "object"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Ok"
+            },
+            "401": {
+              "description":"Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not found"
+            }
+          }
+        }
+      },
+      "/todo/{id}" : {
+        "delete": {
+          "tags": [
+            "Todo"
+          ],
+          "summary": "Delete a Todo item",
+          "description": "Endpoint to delete a todo item",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "header",
+              "name": "Authorization",
+              "description": "Bearer {token}",
+              "type": "string"
+            },
+            {
+              "in": "path",
+              "name": "id",
+              "description": "Parameter is required",
+              "required": true,
+              "type": "number"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Ok"
+            },
+            "401": {
+              "description":"Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not found"
+            }
+          }
+        }
+      },
+      "/search" : {
+        "get": {
+          "tags": [
+            "Todo"
+          ],
+          "summary": "Search a Todo item",
+          "description": "Endpoint to delete a todo item by title or Description",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "header",
+              "name": "Authorization",
+              "description": "Bearer {token}",
+              "type": "string"
+            },
+            {
+              "in": "query",
+              "name": "q",
+              "description": "Query to search a to do item",
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Ok"
+            },
+            "401": {
+              "description":"Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "signup": {
+        "type": "object",
+        "properties": {
+          "fullname": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          }
+        }
+      },
+      "login": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "Todo": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
