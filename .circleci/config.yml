@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/visitAfrica-backend
+    working_directory: ~/To-Do-Backend
     docker:
     - image: circleci/node:12.16.1
     - image: circleci/python:3.6.2-stretch-browsers
