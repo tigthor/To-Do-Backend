@@ -2,7 +2,11 @@ import chai, { expect } from "chai";
 import chaiHttp from "chai-http";
 import app from "../../server";
 import { tokenToUse } from "../fixtures/user.fixture";
-import { newTodo, malformedTodo, malformedUpdateTodo } from "../fixtures/todo.fixture";
+import {
+  newTodo,
+  malformedTodo,
+  malformedUpdateTodo,
+} from "../fixtures/todo.fixture";
 
 chai.should();
 chai.use(chaiHttp);
