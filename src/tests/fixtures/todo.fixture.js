@@ -9,3 +9,7 @@ export const malformedTodo = {
 	description: 'Planning to go on a date with my sugar-mom',
 	priority: 'HIGH'
 };
+
+export const malformedUpdateTodo = {
+  description: "",
+};

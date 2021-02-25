@@ -104,7 +104,7 @@ const todoTest = () => {
         .request(app)
         .patch("/api/todo/1")
         .set("authorization", `bearer ${tokenToUse}`)
-        .send(malformedTodo)
+        .send(malformedUpdateTodo)
         .end((err, res) => {
           expect(res).to.have.status(422);
         });
@@ -120,7 +120,6 @@ const todoTest = () => {
         .send(newTodo)
         .end((err, res) => {
           expect(res).to.have.status(204);
-          expect(res.body).to.have.property("message");
         });
       done();
     });
