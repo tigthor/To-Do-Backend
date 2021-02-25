@@ -17,6 +17,7 @@ export const userEmailExist = {
 	email: 'tigthor1337@gmail.com',
 	password: 'InWebThereisaserverticktockkk1!!21',
 	birthdate: '2020-01-01',
+	gender: 'Male',
 };
 
 export const newUser = {
@@ -24,6 +25,7 @@ export const newUser = {
 	fullname: 'Smith Kendy',
 	email: 'smith@gmail.com',
 	password: 'Token123',
+	gender: 'Male',
 };
 export const mockToken = TokenService.generateToken(newUser);
 
@@ -31,6 +33,7 @@ export const token = TokenService.generateToken({
 	id: newUser.id,
 	fullname: newUser.fullname,
 	email: newUser.email,
+	gender: newUser.gender,
 	createdAt: newUser.createdAt,
 	updatedAt: newUser.updatedAt,
 });
@@ -60,5 +63,6 @@ export const tokenToUse = TokenService.generateToken({
 	id:1,
 	fullname: 'LouangeMu',
 	email: 'loua@gmail.com',
+	gender: 'Female',
 	isVerified: true
 });

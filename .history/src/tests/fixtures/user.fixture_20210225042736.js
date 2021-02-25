@@ -60,5 +60,6 @@ export const tokenToUse = TokenService.generateToken({
 	id:1,
 	fullname: 'LouangeMu',
 	email: 'loua@gmail.com',
+	gender: 'Female',
 	isVerified: true
 });

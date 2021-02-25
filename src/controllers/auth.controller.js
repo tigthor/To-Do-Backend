@@ -20,7 +20,6 @@ class AuthController {
 			email: req.body.email,
 			password: BcryptService.hashPassword(req.body.password)
 		});
-		// conso
 		MailService.sendMail(
       req.body.fullname,
       req.body.email,

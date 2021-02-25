@@ -2,7 +2,7 @@
 	"extends": [
 		"airbnb-base"
 	],
-	"parser": "@babel/eslint-parser",
+	"parser": "@babel-eslint",
 	"parserOptions": {
 		"sourceType": "module",
 		"allowImportExportEverywhere": true

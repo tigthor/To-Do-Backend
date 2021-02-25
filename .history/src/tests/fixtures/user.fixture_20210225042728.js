@@ -31,6 +31,7 @@ export const token = TokenService.generateToken({
 	id: newUser.id,
 	fullname: newUser.fullname,
 	email: newUser.email,
+	gender: newUser.gender,
 	createdAt: newUser.createdAt,
 	updatedAt: newUser.updatedAt,
 });
@@ -60,5 +61,6 @@ export const tokenToUse = TokenService.generateToken({
 	id:1,
 	fullname: 'LouangeMu',
 	email: 'loua@gmail.com',
+	gender: 'Female',
 	isVerified: true
 });

@@ -371,9 +371,6 @@
           },
           "password": {
             "type": "string"
-          },
-          "gender": {
-            "type": "string"
           }
         }
       },
