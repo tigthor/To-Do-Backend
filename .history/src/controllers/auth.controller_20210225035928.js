@@ -13,9 +13,9 @@ class AuthController {
    * @param {object} res
    * @return {object} this is going to create a user
    */
-	static async signup(req, res) {
+	static signup(req, res) {
 		console.log(req.body);
-		await UserService.createUser({
+		UserService.createUser({
 			fullname: req.body.fullname,
 			email: req.body.email,
 			password: BcryptService.hashPassword(req.body.password)

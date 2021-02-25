@@ -10,7 +10,7 @@ class UserService {
    * @param {object} user
    * @return {object} this is a service for creating a user
    */
-	static createUser(user) {
+	static acreateUser(user) {
 		return User.create(user);
 	}
 

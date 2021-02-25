@@ -24,6 +24,33 @@ export async function up(queryInterface, Sequelize) {
 			type: Sequelize.STRING,
 			allowNull: false,
 		},
+		gender: {
+			type: Sequelize.ENUM('Male', 'Female'),
+		},
+		birthdate: {
+			type: Sequelize.DATEONLY,
+			allowNull: true,
+		},
+		tel: {
+			type: Sequelize.STRING,
+			allowNull: true,
+		},
+		country: {
+			type: Sequelize.STRING,
+			allowNull: true,
+		},
+		city: {
+			type: Sequelize.STRING,
+			allowNull: true,
+		},
+		profilePicture: {
+			type: Sequelize.STRING,
+			defaultValue: 'avatar.jpg',
+		},
+		role: {
+			type: Sequelize.STRING,
+			defaultValue: 'Requester',
+		},
 		isVerified: {
 			type: Sequelize.BOOLEAN,
 			defaultValue: false,

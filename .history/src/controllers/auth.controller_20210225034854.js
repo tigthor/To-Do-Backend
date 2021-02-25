@@ -15,30 +15,36 @@ class AuthController {
    */
 	static async signup(req, res) {
 		console.log(req.body);
-		await UserService.createUser({
+		const newUser = await UserService.createUser({
 			fullname: req.body.fullname,
 			email: req.body.email,
-			password: BcryptService.hashPassword(req.body.password)
+			password: BcryptService.hashPassword(req.body.password),
+			isVerified: false
 		});
 		// conso
 		MailService.sendMail(
-      req.body.fullname,
-      req.body.email,
-      TokenService.generateToken({
-        email: req.body.email,
-      })
-	);
-	
-	const newUser = await UserService.findUserByAttribute({email: req.body.email});
+			req.body.fullname,
+			req.body.email,
+			TokenService.generateToken({
+				email: req.body.email,
+			})
+		);
 
-    const userData = { ...newUser.dataValues };
+		const userData = { ...newUser.dataValues };
     delete userData.password;
+		const userData = {
+			id: newUser.id,
+			fullname: newUser.fullname,
+			email: newUser.email,
+			createdAt: newUser.createdAt,
+			updatedAt: newUser.updatedAt,
+		};
 
-    ResponseService.setSuccess(201, "User Successfully Created", {
-      user: userData,
-      token: TokenService.generateToken(userData),
-    });
-    return ResponseService.send(res);
+		ResponseService.setSuccess(201, 'User Successfully Created', {
+			user: userData,
+			token: TokenService.generateToken(userData),
+		});
+		return ResponseService.send(res);
 	}
 
 	/**

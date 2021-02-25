@@ -20,16 +20,13 @@ class AuthController {
 			email: req.body.email,
 			password: BcryptService.hashPassword(req.body.password)
 		});
-		// conso
 		MailService.sendMail(
       req.body.fullname,
       req.body.email,
       TokenService.generateToken({
         email: req.body.email,
       })
-	);
-	
-	const newUser = await UserService.findUserByAttribute({email: req.body.email});
+    );
 
     const userData = { ...newUser.dataValues };
     delete userData.password;

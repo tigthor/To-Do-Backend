@@ -13,7 +13,7 @@ class AuthController {
    * @param {object} res
    * @return {object} this is going to create a user
    */
-	static async signup(req, res) {
+	static signup(req, res) {
 		console.log(req.body);
 		await UserService.createUser({
 			fullname: req.body.fullname,
@@ -27,9 +27,7 @@ class AuthController {
       TokenService.generateToken({
         email: req.body.email,
       })
-	);
-	
-	const newUser = await UserService.findUserByAttribute({email: req.body.email});
+    );
 
     const userData = { ...newUser.dataValues };
     delete userData.password;

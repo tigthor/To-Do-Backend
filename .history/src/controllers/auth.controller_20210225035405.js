@@ -15,7 +15,7 @@ class AuthController {
    */
 	static async signup(req, res) {
 		console.log(req.body);
-		await UserService.createUser({
+		const newUser = awUserService.createUser({
 			fullname: req.body.fullname,
 			email: req.body.email,
 			password: BcryptService.hashPassword(req.body.password)
@@ -27,9 +27,7 @@ class AuthController {
       TokenService.generateToken({
         email: req.body.email,
       })
-	);
-	
-	const newUser = await UserService.findUserByAttribute({email: req.body.email});
+    );
 
     const userData = { ...newUser.dataValues };
     delete userData.password;
