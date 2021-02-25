@@ -1,4 +1,4 @@
-# Awesomity Backend Challenge :airplane:
+# Awesomity Backend Challenge  :airplane:
 
 Awesomity Backend Challenge is a challenge to create a todo BAckend api where the user can Create, Read, Update and Delete.
 
@@ -10,15 +10,15 @@ Awesomity Backend Challenge is a challenge to create a todo BAckend api where th
 
 ### Technologies :balance_scale: :computer:
 
-- [Es6+ Javascript](https://www.ecma-international.org/ecma-262/9.0/index.html) The project was written with ES6 syntax and above.
-- [Node/Express](https://nodejs.org/en/) A JavaScript runtime built on Chrome's V8 JavaScript engine.
-- [PostgreSQL](https://www.postgresql.org/) The World's Most Advanced Open Source Relational Database.
-- [Pivotal Tracker](https://www.pivotaltracker.com) A project management tool used to manage the app.
-- [Npm](https://www.npmjs.com/) Used as the package manager for the app. A fast, reliable, and secure dependency management system.
-- [Sequelize ORM](https://sequelize.org/v3/) A powerful library in Javascript that makes it easy to manage a SQL database
-- [Swagger-UI](https://swagger.io) For documenting the APis
+* [Es6+ Javascript](https://www.ecma-international.org/ecma-262/9.0/index.html) The project was written with ES6 syntax and above.
+* [Node/Express](https://nodejs.org/en/) A JavaScript runtime built on Chrome's V8 JavaScript engine.
+* [PostgreSQL](https://www.postgresql.org/) The World's Most Advanced Open Source Relational Database.
+* [Pivotal Tracker](https://www.pivotaltracker.com) A project management tool used to manage the app.
+* [Npm](https://www.npmjs.com/) Used as the package manager for the app. A fast, reliable, and secure dependency management system.
+* [Sequelize ORM](https://sequelize.org/v3/) A powerful library in Javascript that makes it easy to manage a SQL database
+* [Swagger-UI](https://swagger.io) For documenting the APis
 
-### REST API Docs :clap: :clap:
+### REST API Docs 	:clap: 	:clap:
 
 The Api documentation is done using swagger. View [Todo App Documentation](http://localhost:3000/api-docs)
 
@@ -30,7 +30,7 @@ The API endpoints are being authenticated using [JWT(Json Web Token)](https://jw
 
 ```
 _____________________________________________________________
-METHOD| PATH                     | DESCRIPTIONS              |
+METHOD| PATH                     | DESCRIPTIONS              | 
 ______|__________________________|___________________________|
 POST  | /api/auth/signup         | Create a new Auth account |
 ______|__________________________|___________________________|
@@ -56,25 +56,41 @@ ______|__________________________|___________________________|
 
 ### Installation and Running the Application :collision: :collision:
 
-- Before cloning the application you need to have these requirements below
+* Before cloning the application you need to have these requirements below
 
   ##### Prerequisities
-
-- Node.js installed in your machine it can be downloaded here [Install Node](nodejs.org)
-- Postman installed in your machine it can be downloaded here [Install Postman](https://www.postman.com/)
-- Postgresql installed in your machine it can be downloaded here [Install Postgresql](https://www.postgresql.org/)
-- Sendgrid Api and it can be got here [Sendgrid APi](http://sendgrid.com/)
-- And of course a cup of tea or coffee I prefer coffee
+* Node.js installed in your machine it can be downloaded here [Install Node](nodejs.org)
+* Postman installed in your machine it can be downloaded here [Install Postman](https://www.postman.com/)
+* Postgresql installed in your machine it can be downloaded here [Install Postgresql](https://www.postgresql.org/)
+* Sendgrid Api and it can be got here [Sendgrid APi](http://sendgrid.com/)
+* And of course a cup of tea or coffee I prefer coffee
 
   ##### How to run the project
+* Clone the repository using: `git clone https://github.com/tigthor/To-Do-Backend.git`
+* Run `npm install` To install the project dependencies
+* Use `.env.examples` to set your keys specifically
+* Run `npm run statDev` To start the application
+* Then access the server on `localhost:3000`
+* Then Use swagger docs for testing the application
+* Run `npm test` to run test
+* ### Build Docker image
 
-- Clone the repository using: `git clone https://github.com/tigthor/To-Do-Backend.git`
-- Run `npm install` To install the project dependencies
-- Use `.env.examples` to set your keys specifically
-- Run `npm run statDev` To start the application
-- Then access the server on `localhost:3000`
-- Then Use swagger docs for testing the application
-- Run `npm test` to run test
+
+  * cd to project folder
+  * Run this command `docker build -t <image-name>:version .`
+  * Example: `docker build -t to-do-api:latest .`
+
+  ### Run container
+
+  * Run this command `docker run --name <container-name> -d -p <any-port-of-your-choice>:4000 <image-name>:<version>`
+  * Example: `docker run --name to-do -d -p 4000:4000 to-do-api:latest`
+
+  ### Using docker compose
+
+  * Make sure you have `docker-compose` installed
+  * `cd` to the project directory
+  * Run `docker-compose up build`
+  * Run `docker-compose up`
 
 ## Contributor :star_struck: :star_struck: :heavy_heart_exclamation:
 
