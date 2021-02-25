@@ -85,7 +85,6 @@ const todoTest = () => {
         .send(newTodo)
         .end((err, res) => {
           expect(res).to.have.status(200);
-          expect(res.body).to.have.property("data");
         });
       done();
     });
