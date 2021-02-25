@@ -31,6 +31,7 @@ app.use('/', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => console.log(`Sever listening on port ${PORT}`));
+app.listen(PORT, logger.info(`listening on port ${PORT}...`), log.app(`listening on port ${PORT}...`));
+
 
 export default app;

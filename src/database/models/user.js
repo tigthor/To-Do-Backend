@@ -11,8 +11,14 @@ module.exports = (sequelize, DataTypes) => {
 			fullname: DataTypes.STRING,
 			email: DataTypes.STRING,
 			password: DataTypes.STRING,
-			gender: DataTypes.ENUM('male', 'female'),
-			isVerified: DataTypes.BOOLEAN
+			gender: DataTypes.ENUM('Male', 'Female'),
+			birthdate: DataTypes.DATEONLY,
+			tel: DataTypes.STRING,
+			country: DataTypes.STRING,
+			city: DataTypes.STRING,
+			profilePicture: DataTypes.STRING,
+			role: DataTypes.STRING,
+			isVerified: DataTypes.BOOLEAN,
 		},
 		{
 			sequelize,
@@ -20,7 +26,6 @@ module.exports = (sequelize, DataTypes) => {
 		}
 	);
 	User.associate = (models) => {
-		/** */
 	};
 	return User;
 };

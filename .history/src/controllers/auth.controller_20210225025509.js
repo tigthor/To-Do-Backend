@@ -22,7 +22,7 @@ class AuthController {
 			gender: req.body.gender,
 			isVerified: false
 		});
-		// conso
+		conso
 		MailService.sendMail(
 			req.body.fullname,
 			req.body.email,

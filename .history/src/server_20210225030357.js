@@ -4,6 +4,9 @@ import { config } from 'dotenv';
 import express from 'express';
 import swaggerUi from 'swagger-ui-express';
 import routes from './routes';
+import log from './config/debug';
+import logger from './config/log.config';
+import db from './database/models/index';
 import code from './helpers/status-code.helper';
 import swaggerSpec from '../swagger.json';
 import ResponseService from './services/response.service';
@@ -31,6 +34,18 @@ app.use('/', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => console.log(`Sever listening on port ${PORT}`));
+app.listen(PORT, logger.info(`listening on port ${PORT}...`), log.app(`listening on port ${PORT}...`));
+
+const { sequelize, dbUrl } = db;
+sequelize.authenticate()
+	.then(() => {
+		logger.info('Database connected...', dbUrl);
+		log.app('Database connected...', dbUrl);
+		app.listen(PORT, logger.info(`listening on port ${PORT}...`), log.app(`listening on port ${PORT}...`));
+	})
+	.catch((err) => {
+		logger.error(`error: ${err}`);
+		log.error(`error: ${err}`);
+	});
 
 export default app;
