@@ -1,8 +1,10 @@
-import chai, { expect } from "chai";
-import chaiHttp from "chai-http";
-import app from "../../server";
-import { tokenToUse } from "../fixtures/user.fixture";
-import { newTodo, malformedTodo } from "../fixtures/todo.fixture";
+import chai, { expect } from 'chai';
+import chaiHttp from 'chai-http';
+import app from '../../server';
+import {
+	tokenToUse
+} from '../fixtures/user.fixture';
+import { newTodo, malformedTodo } from '../fixtures/todo.fixture';
 
 chai.should();
 chai.use(chaiHttp);
@@ -88,8 +90,8 @@ const todoTest = () => {
           expect(res.body).to.have.property("data");
         });
       done();
-    });
-    it("Should check update todo not found", (done) => {
+	});
+	 it("Should check update todo not found", (done) => {
       chai
         .request(app)
         .patch("/api/todo/1000")
@@ -99,8 +101,8 @@ const todoTest = () => {
           expect(res).to.have.status(404);
         });
       done();
-    });
-    it("Should check update malformed", (done) => {
+	});
+	 it("Should check update malformed", (done) => {
       chai
         .request(app)
         .patch("/api/todo/1")
@@ -111,6 +113,7 @@ const todoTest = () => {
         });
       done();
     });
+
   });
   describe("/DELETE Todo", () => {
     it("Should create todo", (done) => {
@@ -126,6 +129,7 @@ const todoTest = () => {
       done();
     });
   });
+  
 };
 
 export default todoTest;

@@ -14,6 +14,7 @@ class AuthController {
    * @return {object} this is going to create a user
    */
 	static async signup(req, res) {
+		
 		await UserService.createUser({
 			fullname: req.body.fullname,
 			email: req.body.email,
