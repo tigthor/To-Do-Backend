@@ -6,11 +6,13 @@ const { User } = models;
  * This is a class dealing with Users
  */
 class UserService {
-    /**
-     * @param {object} user
+	/**
+     * @param {object} data
      * @returns {object} create a new user
      */
-    static createUser = (user) => User.create(user)
+    static createUser(user) {
+     return User.create(user);
+}
 
     /**
      * @param {object} attribute

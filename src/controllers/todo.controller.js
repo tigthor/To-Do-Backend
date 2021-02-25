@@ -1,6 +1,7 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import TodoService from '../services/todo.service';
 import ResponseService from '../services/response.service';
+import code from '../helpers/status-code.helper';
 
 /**
  * This is a todo controller
@@ -14,7 +15,6 @@ class TodoController {
    */
   static createTodo = async (req, res) => {
   	const createdTodo = await TodoService.createTodo({
-
   		title: req.body.title,
   		description: req.body.description,
   		priority: req.body.priority,

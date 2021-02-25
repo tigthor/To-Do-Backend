@@ -12,7 +12,7 @@ export const validateCreateTodo = (req, res, next) => {
 			'any.required': 'description is required',
 			'string.empty': 'description is not allowed to be empty',
 		}),
-		priority: Joi.any().valid('LOW', 'MEDIUM', 'HIGH').required().messages({
+		priority: Joi.string().valid('LOW', 'MEDIUM', 'HIGH').required().messages({
 			'string.empty': 'priotity is not allowed to be empty',
 			'any.required': 'priotity is required',
 			'any.only': 'priority must be  LOW or MEDIUM or HIGH',
@@ -39,7 +39,7 @@ export const validateUpdateTodo = (req, res, next) => {
 		description: Joi.string().optional().messages({
 			'string.empty': 'description is not allowed to be empty',
 		}),
-		priority: Joi.any().valid('LOW', 'MEDIUM', 'HIGH').optional().messages({
+		priority: Joi.string().valid('LOW', 'MEDIUM', 'HIGH').optional().messages({
 			'string.empty': 'priotity is not allowed to be empty',
 			'any.required': 'priotity is required',
 			'any.only': 'priority must be  LOW or MEDIUM or HIGH',

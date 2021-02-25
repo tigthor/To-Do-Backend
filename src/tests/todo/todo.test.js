@@ -1,10 +1,10 @@
-import chai from 'chai';
+import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../server';
 import {
 	tokenToUse
 } from '../fixtures/user.fixture';
-import { newTodo } from '../fixtures/todo.fixture';
+import { newTodo, malformedTodo } from '../fixtures/todo.fixture';
 
 chai.should();
 chai.use(chaiHttp);
@@ -18,9 +18,8 @@ const todoTest = () => {
 				.set('authorization', `bearer ${tokenToUse}`)
 				.send(newTodo)
 				.end((err, res) => {
-					res.body.should.be.an('object');
-					res.status.should.be.equal(201);
-					res.body.should.have.property('message');
+					expect(res).to.have.status(201);
+					expect(res.body).to.have.property('data');
 				});
 			done();
 		});
@@ -43,7 +42,7 @@ const todoTest = () => {
 				.request(app)
 				.post('/api/todo')
 				.set('authorization', `bearer ${tokenToUse}`)
-				.send(newTodo)
+				.send(malformedTodo)
 				.end((err, res) => {
 					res.body.should.be.an('object');
 					res.status.should.be.equal(422);
