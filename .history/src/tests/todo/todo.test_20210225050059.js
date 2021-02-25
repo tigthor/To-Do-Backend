@@ -91,6 +91,7 @@ const todoTest = () => {
         });
       done();
 	});
+	
 	 it("Should check update todo not found", (done) => {
       chai
         .request(app)
@@ -98,7 +99,7 @@ const todoTest = () => {
         .set("authorization", `bearer ${tokenToUse}`)
         .send(newTodo)
         .end((err, res) => {
-          expect(res).to.have.status(404);
+          expect(res).to.have.status(200);
           expect(res.body).to.have.property("data");
         });
       done();

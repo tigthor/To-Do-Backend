@@ -90,30 +90,18 @@ const todoTest = () => {
           expect(res.body).to.have.property("data");
         });
       done();
-	});
-	 it("Should check update todo not found", (done) => {
-      chai
-        .request(app)
-        .patch("/api/todo/1000")
-        .set("authorization", `bearer ${tokenToUse}`)
-        .send(newTodo)
-        .end((err, res) => {
-          expect(res).to.have.status(404);
-          expect(res.body).to.have.property("data");
-        });
-      done();
     });
   });
-  describe("/DELETE Todo", () => {
+  describe("/POST createTodo", () => {
     it("Should create todo", (done) => {
       chai
         .request(app)
-        .delete("/api/todo/1")
+        .post("/api/todo")
         .set("authorization", `bearer ${tokenToUse}`)
         .send(newTodo)
         .end((err, res) => {
-          expect(res).to.have.status(204);
-          expect(res.body).to.have.property("message");
+          expect(res).to.have.status(201);
+          expect(res.body).to.have.property("data");
         });
       done();
     });

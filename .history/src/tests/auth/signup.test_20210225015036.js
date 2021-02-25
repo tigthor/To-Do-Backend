@@ -58,7 +58,7 @@ const signUpTest = () => {
 				.send(userToVerify)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.status.should.be.equal(201);
+					res.status.should.be.equal(409);
 					res.body.should.have.property('message');
 				});
 			done();

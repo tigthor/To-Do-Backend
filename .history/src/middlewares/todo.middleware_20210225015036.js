@@ -13,4 +13,6 @@ export const checkIfTodoExist = async (req, res, next) => {
 		}
 		next();
 	}
+	ResponseService.setError(code.badRequest, `Todo id ${req.params.id} is invalid`);
+	return ResponseService.send(res);
 };

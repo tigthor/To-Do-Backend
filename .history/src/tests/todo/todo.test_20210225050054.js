@@ -91,14 +91,15 @@ const todoTest = () => {
         });
       done();
 	});
+	
 	 it("Should check update todo not found", (done) => {
       chai
         .request(app)
-        .patch("/api/todo/1000")
+        .patch("/api/todo/1")
         .set("authorization", `bearer ${tokenToUse}`)
         .send(newTodo)
         .end((err, res) => {
-          expect(res).to.have.status(404);
+          expect(res).to.have.status(200);
           expect(res.body).to.have.property("data");
         });
       done();
